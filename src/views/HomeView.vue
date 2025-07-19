@@ -31,7 +31,7 @@ const stockData = computed(() => {
   if (stock) {
     return {
       ...stock,
-      fullName: t(stock.fullName) // Translate the full name here
+      fullName: t(selectedStock.value),
     }
   }
   return null
@@ -39,12 +39,12 @@ const stockData = computed(() => {
 
 const translatedCompareStock1 = computed(() => {
   const stock = stockStore.getStockByTicker(compareStock1.value)
-  return stock ? { ...stock, fullName: t(stock.fullName) } : null
+  return stock ? { ...stock, fullName: t(compareStock1.value) } : null
 })
 
 const translatedCompareStock2 = computed(() => {
   const stock = stockStore.getStockByTicker(compareStock2.value)
-  return stock ? { ...stock, fullName: t(stock.fullName) } : null
+  return stock ? { ...stock, fullName: t(compareStock2.value) } : null
 })
 
 const formatCurrency = (value) => {
@@ -124,8 +124,8 @@ const addToPortfolio = () => {
         <div class="portfolio-layout">
           <div class="portfolio-table">
             <DataTable :value="portfolioStore.getPortfolioItems">
-              <Column field="ticker" header="Ticker"></Column>
-              <Column field="quantity" header="Quantity">
+              <Column field="ticker" :header="$t('ticker')"></Column>
+              <Column field="quantity" :header="$t('quantity')">
                 <template #body="slotProps">
                   <InputNumber
                     v-model="slotProps.data.quantity"
@@ -134,7 +134,7 @@ const addToPortfolio = () => {
                   />
                 </template>
               </Column>
-              <Column header="Actions">
+              <Column :header="$t('actions')">
                 <template #body="slotProps">
                   <Button
                     icon="pi pi-trash"
@@ -152,15 +152,17 @@ const addToPortfolio = () => {
       </div>
       <div class="section mt-4">
         <h2>{{ $t('portfolioPerformance') }}</h2>
-        <h3>{{ $t('totalValue') }}: {{ formatCurrency(portfolioTotal) }}</h3>
-        <PortfolioPerformanceChart />
+        <h3>{{ $t('totalValue') }}: {{ formatCurrency(portfolioStore.getPortfolioTotal) }}</h3>
+        <div class="chart-container">
+          <PortfolioPerformanceChart />
+        </div>
       </div>
     </div>
 
     <Dialog :header="$t('addToPortfolioDialogHeader')" v-model:visible="dialogVisible">
       <div class="p-fluid">
         <div class="p-field">
-          <label for="quantity">{{ $t('quantity') }}</label>
+          <label for="quantity">{{ $t('quantity').concat('          ') }}</label>
           <InputNumber id="quantity" v-model="quantity" :min="1" />
         </div>
       </div>
@@ -214,16 +216,20 @@ const addToPortfolio = () => {
 .portfolio-layout {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem; /* Add some space between items */
+  gap: 1rem;
 }
 
 .portfolio-table {
-  flex: 2; /* Take up more space */
-  min-width: 300px; /* Ensure it doesn't get too small */
+  flex: 2;
+  min-width: 300px;
 }
 
 .portfolio-pie-chart {
-  flex: 1; /* Take up remaining space */
-  min-width: 250px; /* Ensure it doesn't get too small */
+  flex: 1;
+  min-width: 250px;
+}
+
+.chart-container {
+  height: 30rem;
 }
 </style>
