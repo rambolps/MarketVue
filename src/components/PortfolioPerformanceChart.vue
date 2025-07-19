@@ -57,8 +57,6 @@ const chartData = computed(() => {
 
 const chartOptions = computed(() => {
   return {
-    maintainAspectRatio: false,
-    aspectRatio: 0.6,
     plugins: {
       legend: {
         labels: {
