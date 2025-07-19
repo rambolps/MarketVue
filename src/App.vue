@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import SelectButton from 'primevue/selectbutton'
 import HomeView from './views/HomeView.vue'
@@ -12,8 +12,12 @@ const langOptions = ref([
   { label: 'Français', value: 'fr' },
 ])
 
-watch(lang, (value) => {
-  locale.value = value
+// watch(lang.value, (value) => {
+//   locale.value = value
+// })
+
+locale.value = computed(() => {
+  return lang.value
 })
 </script>
 
