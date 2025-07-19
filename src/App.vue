@@ -12,12 +12,8 @@ const langOptions = ref([
   { label: 'Français', value: 'fr' },
 ])
 
-// watch(lang.value, (value) => {
-//   locale.value = value
-// })
-
-locale.value = computed(() => {
-  return lang.value
+watch(lang.value, (value) => {
+  locale.value = value
 })
 </script>
 
