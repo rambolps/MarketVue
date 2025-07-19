@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-
 export const useStockStore = defineStore('stock', {
   state: () => ({
     stocks: {
@@ -495,7 +494,10 @@ export const useStockStore = defineStore('stock', {
   }),
   getters: {
     getTickerList: (state) => {
-      return Object.keys(state.stocks)
+      return Object.keys(state.stocks).map(ticker => ({
+        name: state.stocks[ticker].fullName,
+        code: ticker
+      }))
     },
 
     getStockByTicker: (state) => {
