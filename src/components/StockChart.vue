@@ -32,17 +32,19 @@ const chartData = computed(() => {
 
 const chartOptions = computed(() => {
   return {
+    responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         labels: {
-          color: '#495057',
+          color: '#fff',
         },
       },
     },
     scales: {
       x: {
         ticks: {
-          color: '#495057',
+          color: '#fff',
         },
         grid: {
           color: '#ebedef',
@@ -50,7 +52,7 @@ const chartOptions = computed(() => {
       },
       y: {
         ticks: {
-          color: '#495057',
+          color: '#fff',
         },
         grid: {
           color: '#ebedef',
@@ -62,6 +64,12 @@ const chartOptions = computed(() => {
 </script>
 
 <template>
-  <Chart v-if="stockData" type="line" :data="chartData" :options="chartOptions" />
-  <div v-else>No stock data available.</div>
+  <Chart type="line" :data="chartData" :options="chartOptions" class="chart" />
 </template>
+
+<style scoped>
+.chart {
+  width: 100%;
+  height: 100%;
+}
+</style>
