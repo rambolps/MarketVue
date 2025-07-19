@@ -96,7 +96,12 @@ const addToPortfolio = () => {
             </Dropdown>
           </div>
         </div>
-        <StockComparisonChart :stock1="translatedCompareStock1" :stock2="translatedCompareStock2" />
+        <div class="chart-container">
+          <StockComparisonChart
+            :stock1="translatedCompareStock1"
+            :stock2="translatedCompareStock2"
+          />
+        </div>
       </div>
       <div class="section mt-4">
         <h2>{{ $t('stocks') }}</h2>
@@ -117,7 +122,9 @@ const addToPortfolio = () => {
           </Dropdown>
           <Button :label="$t('addToPortfolioButton')" @click="dialogVisible = true" />
         </div>
-        <StockChart :stockData="stockData" />
+        <div class="chart-container">
+          <StockChart :stockData="stockData" />
+        </div>
       </div>
       <div class="section mt-4">
         <h2>{{ $t('portfolio') }}</h2>
@@ -230,6 +237,9 @@ const addToPortfolio = () => {
 }
 
 .chart-container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  position: relative;
   height: 30rem;
 }
 </style>
