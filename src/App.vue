@@ -13,7 +13,9 @@ const langOptions = ref([
 ])
 
 watch(lang, (value) => {
-  locale.value = value
+  if (value) {
+    locale.value = value
+  }
 })
 </script>
 
