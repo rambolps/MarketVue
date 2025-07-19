@@ -42,7 +42,7 @@ const messages = {
     actions: 'Actions',
     VGRO: "FNB de portefeuille d'actions de croissance Vanguard (VGRO)",
     VFV: 'FNB Vanguard S&P 500 (VFV)',
-    VDY: 'FNB Vanguard FTSE Indice canadien à rendement élevé en dividendes (VDY)',
+    VDY: 'FNB Vanguard FTSE rendement des dividendes élevés (VDY)',
     VRE: 'FNB Vanguard FTSE Plafonné canadien REIT Indice (VRE)',
     XQQ: 'FNB iShares NASDAQ 100 Indice (couvert en CAD) (XQQ)',
     XEG: 'FNB iShares S&P/TSX Énergie plafonnée Indice (XEG)',
