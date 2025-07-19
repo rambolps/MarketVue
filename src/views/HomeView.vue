@@ -137,6 +137,7 @@ const addToPortfolio = () => {
                   <InputNumber
                     v-model="slotProps.data.quantity"
                     @input="portfolioStore.updateQuantity(slotProps.data.ticker, $event.value)"
+                    showButtons
                     :min="1"
                   />
                 </template>
@@ -170,7 +171,7 @@ const addToPortfolio = () => {
       <div class="p-fluid">
         <div class="p-field">
           <label for="quantity">{{ $t('quantity').concat('          ') }}</label>
-          <InputNumber id="quantity" v-model="quantity" :min="1" />
+          <InputNumber id="quantity" showButtons v-model="quantity" :min="1" />
         </div>
       </div>
       <template #footer>
