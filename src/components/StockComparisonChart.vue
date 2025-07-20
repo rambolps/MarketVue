@@ -40,7 +40,7 @@ const chartData = computed(() => {
       },
       {
         label: t(stock2Data.fullName),
-        backgroundColor: '#FFA726',
+        backgroundColor: '#66b486',
         data: data2,
       },
     ],
